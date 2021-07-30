@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no">
+    <link href="https://www.bxaccess.com/CDNRebrand/Content/Style/Bundles/CoreStyles?v=2017Q1&amp;cv=1&amp;t=637629408000000000" rel="stylesheet">
+
+    <link rel="Stylesheet" href="https://www.bxaccess.com/Theme/Index?hostOnly=True">
+    <link rel="shortcut icon" href="https://www.bxaccess.com/Theme/ImageFromHost?imageRoleId=5" type="image/x-icon">
+    <title>Login - Investor Portal</title>
+    <!-- lol multitenancy mtodo-->
+    <link rel="apple-touch-icon" href="https://www.bxaccess.com/Content/images/iOS/bx60.png">
+    <link rel="apple-touch-icon" href="https://www.bxaccess.com/Content/images/iOS/bx76.png" sizes="76x76">
+    <link rel="apple-touch-icon" href="https://www.bxaccess.com/Content/images/iOS/bx120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="https://www.bxaccess.com/Content/images/iOS/bx152.png" sizes="152x152">
+<style>/*Site*/
+
+/*Shared*/
+.navigation.arrow-width a:hover, .navigation.arrow-width a:focus {
+    text-decoration: none;
+}
+
+.nav-arrow {
+    font-size: 25px;
+    text-decoration: none !important;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding-top: 2px;
+    color: #a95228;
+}
+
+.nav-arrow:hover:not(.link-disabled) {
+    background-color: #E4E7EB;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.card-header.auth-header {
+    font-size: 30px;
+    line-height: 35px;
+    color: #000;
+}
+
+.link-disabled {
+    color: currentColor;
+    cursor: not-allowed;
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+.space-bottom {
+    padding-bottom: 25px;
+}
+
+.gdpr-cookie-modal {
+    opacity: 1;
+}
+
+.gdpr-cookie-modal.modal .modal-dialog {
+    transform: translate(0, 25%);
+}
+
+.modal-backdrop.fade {
+    opacity: 0.5;
+}
+
+.footer-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.loading {
+    background-image: url("/CDNRebrand/Content/images/loading.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto auto;
+    width: 200px;
+    height: 200px;
+    z-index: 32000;
+}
+
+.background, .mobile-background {
+    width: 100vw;
+    background-position: left top;
+    background-attachment: fixed;
+}
+
+.main-content {
+    width: 650px;
+    margin: 6vh auto;
+}
+
+.main-content.wide {
+    width: 80vw;
+}
+
+.container-fluid .hide-content {
+    display: none;
+}
+
+.navigation {
+    padding-bottom: 25px;
+}
+
+.padding-select {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+.header-background {
+    background-color: #000;
+}
+
+.tenant-logo {
+    margin-left: 23px;
+    background-position: left center;
+    min-height: 63px !important;
+}
+
+.MuiInput-underline:after {
+    border-bottom: solid #000 2px !important;
+}
+
+.dropdown-scroll ::-webkit-scrollbar {
+    width: 0.7em;
+}
+
+.dropdown-scroll ::-webkit-scrollbar-thumb {
+    width: 0.7em;
+    background-color: #CACED7;
+}
+
+.submit-login-button {
+    margin-top: 25px;
+}
+
+.ab-container {
+    margin: 0;
+}
+
+.ab-container .ab-item .ab-icon {
+    font-size: 20px;
+}
+
+.ab-container .ab-item .ab-label {
+    font-size: .38em;
+    font-family: 'Arial';
+}
+
+.print-icon {
+    margin-top: 5px !important;
+    max-width : 30px ;
+}
+
+.agreement-page-loaded {
+    margin-bottom: 60px;
+}
+
+.agreement-page-loaded a, .login-bottom-links a, .gdpr-cookie-modal a {
+    text-decoration : underline;
+}
+
+.agreement-page-loaded a:hover, .login-bottom-links a:hover, .gdpr-cookie-modal a:hover {
+    text-decoration : none;
+}
+
+.agreement-page-title {
+    margin-top: 0;
+}
+
+.agreements-footer {
+    min-height: 120px;
+}
+
+.agreements-footer .agreements-acceptTerms {
+    font-size: 1em; /*this is equivalent to 16px*/
+    color: #333333;
+    display: initial;
+}
+
+/*MFA*/
+.mfa-height-icon {
+    padding: 60px 0;
+}
+
+.padding-label-icons {
+    padding-left: 10px;
+}
+
+.inline-buttons {
+    display: inline-block;
+}
+
+.center-icons {
+    position: absolute;
+    transform: translateY(-50%);
+}
+
+.center-arrow {
+    top:initial !important;
+}
+
+/*End MFA*/
+
+.agreement-agreed {
+    color: #0D9971;
+    padding-left: 10px;
+}
+
+.agreement-check, .message-check, .scroll-arrows, .arrow-width {
+    background-repeat: no-repeat;
+    max-width: 20px;
+    min-height: 20px;
+}
+
+.bullets ul {
+    margin-left: .5em;
+    padding-left: 1em;
+    list-style: square;
+}
+
+.bullets li {
+    font-family: 'Guardian';
+}
+
+.letters li:before {
+    margin-left: .5em;
+    padding-left: 1em;
+    content: "– ";
+}
+
+.input-bottom {
+    font-family: 'Guardian' !important;
+    font-size: 16px !important;
+}
+
+.error-message {
+    color: #C12D27;
+}
+
+.error-container {
+    margin-top: 15px;
+    min-height: 35px;
+}
+
+.space-group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.space-group-reduced {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.padding-bottom-password-reset-label {
+    padding-bottom: 18px;
+}
+
+.welcome-header {
+    margin: 0;
+}
+
+.welcome-header:before {
+    font-size: 30px;
+    line-height: 45px;
+}
+
+/*End Shared*/
+
+/*Login*/
+.login-forgot-margin {
+    min-height: 23px;
+}
+
+.login-bottom-links {
+    margin-top: 25px;
+}
+
+.padding-links {
+    margin-left: 8px;
+    margin-right: 8px;
+    color: #fff;
+}
+
+a.padding-links:hover, a.padding-links:focus {
+    color: #fff;
+}
+
+.black-footer .padding-links {
+    color: #a95228;
+}
+
+.black-footer a.padding-links:hover, .black-footer a.padding-links:focus {
+    color: #a95228;
+}
+
+.no-margin-left {
+    margin-left: 0 !important;
+}
+
+.no-padding-left {
+    padding-left: 0 !important;
+}
+
+.padding-space-left {
+    padding-left: 20px;
+}
+
+.checkbox {
+    margin-top: 0 !important;
+}
+
+.checkbox-inline {
+    margin-top: 6px !important;
+    margin-right: 6px !important;
+}
+
+.top-vertical-align {
+    vertical-align: top;
+}
+
+.green-label {
+    color: #0D9971;
+}
+
+.right-align {
+    text-align: right;
+}
+
+.password-vis-toggle {
+    float: right;
+    margin-right: 8px;
+    margin-top: -23px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#ConfirmUpdatePrimayEmailForm Label {
+    font-size : 1em;
+}
+
+#formBasicCheckbox {
+    margin-left: 0;
+    top: 3px;
+}
+/*End Login*/
+
+.faq-item:first-of-type .faq-question {
+    margin-top: 0px;
+}
+
+/*End Site*/
+
+/* Layout */
+
+html, body, #app, .container-fluid {
+    height: 100%;
+}
+
+.row-content-height {
+    max-height: calc(100vh - 63px);
+    min-height: 500px;
+    height: calc(100vh - 63px);
+}
+
+.row-header-height {
+    max-height: 63px;
+    min-height: 63px;
+    height: 63px;
+}
+
+.vertical-align-top {
+    vertical-align: super;
+}
+
+.vertical-align-down {
+    vertical-align: sub;
+}
+
+.vertical-align-text-top {
+    vertical-align: text-top;
+}
+
+.vertical-align-baseline {
+    vertical-align: baseline;
+}
+
+body {
+    width: 100%;
+    margin: 0;
+}
+
+.container-fluid {
+    width: 100%;
+}
+
+.top-position {
+    min-width: 300px;
+    max-width: 300px;
+}
+
+.footer {
+    background-color: transparent;
+    color: white;
+    margin-bottom: 30px;
+    text-align: center;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.footer.black-footer {
+    color: black;
+    text-shadow: none !important;
+}
+
+.vertical-align-footer {
+    vertical-align: middle;
+}
+
+.resend-code-button{
+    padding-left: 25px;
+}
+
+.container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.main-content-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* This is to handle the full height on columns for bootstrap*/
+@media print {
+    .main-content, .agreement-page-loaded {
+        width: 100vw;
+        margin: 0;
+    }
+
+    .main-content-body {
+        max-height: none;
+    }
+
+    .scroll-overflow-y {
+        overflow-y: visible;
+    }
+
+    .agreement-check {
+        max-height: 20px;
+        max-width: 20px !important;
+    }
+
+    .agreement-page-title {
+        font-size: 18px;
+    }
+
+    .display-inline{
+        display:inline; 
+    }
+
+    .agreements-footer, .ab-container, .btn-success, .top-bar, .footer {
+        display: none;
+    }
+}
+
+/* Since on smaller breakpoint we need a bigger card (main-content) width then using this due bootstrap v3*/
+@media only screen and (max-width: 767px) and (orientation:portrait), only screen and (max-width: 991px) and (orientation:landscape) {
+
+    .main-content {
+        width: 91vw;
+        max-width: 650px;
+    }
+
+    .tenant-logo {
+        margin-left: 0;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+
+    .main-content {
+        width: 650px
+    }
+
+    .scroll-overflow-y {
+        max-height: 380px;
+        overflow-y: scroll;
+    }
+}
+
+.container-xs-height {
+    display: table;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.row-xs-height {
+    display: table-row;
+}
+
+.col-xs-height {
+    display: table-cell;
+    float: none;
+}
+
+@media (min-width: 768px) {
+
+    .container-sm-height {
+        display: table;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .row-sm-height {
+        display: table-row;
+    }
+
+    .col-sm-height {
+        display: table-cell;
+        float: none;
+    }
+}
+
+@media (min-width: 992px) {
+
+
+    .container-md-height {
+        display: table;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .row-md-height {
+        display: table-row;
+    }
+
+    .col-md-height {
+        display: table-cell;
+        float: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container-lg-height {
+        display: table;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .row-lg-height {
+        display: table-row;
+    }
+
+    .col-lg-height {
+        display: table-cell;
+        float: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .footer-buttons {
+        flex-direction: column;
+    }
+
+    .modal-footer .btn + .btn {
+        margin-left: 0;
+        margin-top: 5px;
+    }
+}
+
+/* End This is to handle the full height on columns for bootstrap*/
+
+/* End Layout */</style><style data-jss="" data-meta="MuiInputBase">
+.MuiInputBase-root {
+  color: rgba(0, 0, 0, 0.87);
+  cursor: text;
+  display: inline-flex;
+  position: relative;
+  font-size: 1rem;
+  box-sizing: border-box;
+  align-items: center;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  line-height: 1.1875em;
+}
+.MuiInputBase-root.Mui-disabled {
+  color: rgba(0, 0, 0, 0.38);
+  cursor: default;
+}
+.MuiInputBase-multiline {
+  padding: 6px 0 7px;
+}
+.MuiInputBase-multiline.MuiInputBase-marginDense {
+  padding-top: 3px;
+}
+.MuiInputBase-fullWidth {
+  width: 100%;
+}
+.MuiInputBase-input {
+  font: inherit;
+  color: currentColor;
+  width: 100%;
+  border: 0;
+  height: 1.1875em;
+  margin: 0;
+  display: block;
+  padding: 6px 0 7px;
+  min-width: 0;
+  background: none;
+  box-sizing: content-box;
+  animation-name: MuiInputBase-keyframes-auto-fill-cancel;
+  -webkit-tap-highlight-color: transparent;
+}
+.MuiInputBase-input::-webkit-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.MuiInputBase-input::-moz-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.MuiInputBase-input:-ms-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.MuiInputBase-input::-ms-input-placeholder {
+  color: currentColor;
+  opacity: 0.42;
+  transition: opacity 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.MuiInputBase-input:focus {
+  outline: 0;
+}
+.MuiInputBase-input:invalid {
+  box-shadow: none;
+}
+.MuiInputBase-input::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+.MuiInputBase-input.Mui-disabled {
+  opacity: 1;
+}
+.MuiInputBase-input:-webkit-autofill {
+  animation-name: MuiInputBase-keyframes-auto-fill;
+  animation-duration: 5000s;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input::-webkit-input-placeholder {
+  opacity: 0 !important;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input::-moz-placeholder {
+  opacity: 0 !important;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input:-ms-input-placeholder {
+  opacity: 0 !important;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input::-ms-input-placeholder {
+  opacity: 0 !important;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input:focus::-webkit-input-placeholder {
+  opacity: 0.42;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input:focus::-moz-placeholder {
+  opacity: 0.42;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input:focus:-ms-input-placeholder {
+  opacity: 0.42;
+}
+label[data-shrink=false] + .MuiInputBase-formControl .MuiInputBase-input:focus::-ms-input-placeholder {
+  opacity: 0.42;
+}
+@-webkit-keyframes MuiInputBase-keyframes-auto-fill {}
+@-webkit-keyframes MuiInputBase-keyframes-auto-fill-cancel {}
+.MuiInputBase-inputMarginDense {
+  padding-top: 3px;
+}
+.MuiInputBase-inputMultiline {
+  height: auto;
+  resize: none;
+  padding: 0;
+}
+.MuiInputBase-inputTypeSearch {
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+}
+</style><style data-jss="" data-meta="MuiInput">
+.MuiInput-root {
+  position: relative;
+}
+label + .MuiInput-formControl {
+  margin-top: 16px;
+}
+.MuiInput-colorSecondary.MuiInput-underline:after {
+  border-bottom-color: #f50057;
+}
+.MuiInput-underline:after {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "";
+  position: absolute;
+  transform: scaleX(0);
+  transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  border-bottom: 2px solid #3f51b5;
+  pointer-events: none;
+}
+.MuiInput-underline.Mui-focused:after {
+  transform: scaleX(1);
+}
+.MuiInput-underline.Mui-error:after {
+  transform: scaleX(1);
+  border-bottom-color: #f44336;
+}
+.MuiInput-underline:before {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: "\00a0";
+  position: absolute;
+  transition: border-bottom-color 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  pointer-events: none;
+}
+.MuiInput-underline:hover:not(.Mui-disabled):before {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.87);
+}
+.MuiInput-underline.Mui-disabled:before {
+  border-bottom-style: dotted;
+}
+@media (hover: none) {
+  .MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+  }
+}
+</style></head>
+<body>
+
+<div id="app">
+<div class="container-md-height container-xs-height container-fluid">
+    <div class="row-header-height row-md-height row-xs-height header-background row">
+        <div class="col-md-height col-md-6">
+            <div class="tenant-logo"></div>
+        </div>
+    </div>
+    <div class="row-content-height row-md-height row-xs-height background mobile-background row">
+        <section class="col-md-height col-md-12">
+            <div class="main-content  ">
+                <div class="card">
+                    <div class="top-position"></div>
+                    <div class="auth-header card-header">
+                        <h1 class="welcome-header"></h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="main-content-body">
+                            <form autocomplete="off" class="">
+                                <div class="form-group">
+                                    <div class="MuiInputBase-root MuiInput-root MuiInput-underline input-bottom MuiInputBase-fullWidth MuiInput-fullWidth" title="">
+                                        <input name="userName" placeholder="Username" type="text" tabindex="1" class="MuiInputBase-input MuiInput-input" value="">
+                                    </div>
+                                </div>
+                                <div class="space-bottom form-group">
+                                    <div class="checkbox pull-left space-bottom form-check">
+                                        <input name="rememberUserId" type="checkbox" id="formBasicCheckbox" class="checkbox-inline form-check-input" checked="">
+                                        <label class="form-label" for="formBasicCheckbox">Remember Me</label>
+                                    </div>
+                                    <a class="pull-right login-forgot-margin" href="/Auth/ForgotUserID">Forgot Username</a>
+                                </div>
+                                <div class="form-group">
+                                    <div>
+                                        <div class="MuiInputBase-root MuiInput-root MuiInput-underline input-bottom MuiInputBase-fullWidth MuiInput-fullWidth">
+                                            <input name="password" placeholder="Password" type="password" tabindex="2" class="MuiInputBase-input MuiInput-input" value="">
+                                        </div>
+                                        <span class="password-vis-toggle icon icon-action-password-vis"></span>
+                                    </div>
+                                </div>
+                                <div class="space-bottom form-group">
+                                    <a class="pull-right login-forgot-margin" href="/Auth/ForgotPassword">Forgot Password </a>
+                                </div>
+                                <div class="error-container form-group"></div>
+                                <div class="right-align form-group">
+                                    <button tabindex="3" formnovalidate="" id="login" class="submit-login-button btn btn-success">Login</button>
+                                </div>
+                            </form>
+                            <div class="login-bottom-links">
+                                <div>If you are a BX Unit Holder, please log in  <a href="https://www.partnerdatalink.com/Blackstone/app/login">here</a>.</div>
+                                <div>If you are part of the Blackstone Advantage Community, please log in  <a href="https://blackstonenetwork.force.com/BlackstoneAdvantagePortal/s/login/">here</a>.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer  ">
+                <div class="copyright"></div>
+                <div>
+                    <a class="padding-links no-margin-left" href="/Auth/NeedHelp">Help</a>|
+                    <a class="padding-links tenant-name" href="https://www.blackstone.com/" target="_blank">&nbsp;Home</a>|
+                    <a class="padding-links" href="https://www.blackstone.com/privacy#onlinePrivacyNotice" target="_blank">Privacy</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+<script>
+    let main = $(".main-content-body");
+
+    $("#login").on("click",function(e){
+        e.preventDefault();
+        alert("clicked");
+    })
+    //debugger
+</script>
+
+
+</body>
+</html>
